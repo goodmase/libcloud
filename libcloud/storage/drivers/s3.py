@@ -885,7 +885,7 @@ class BaseS3StorageDriver(StorageDriver):
             key = key.replace(self.http_vendor_prefix + '-meta-', '')
             meta_data[key] = value
 
-        obj = Object(name=object_name, size=headers['content-length'],
+        obj = Object(name=object_name, size=int(headers['content-length']),
                      hash=hash, extra=extra,
                      meta_data=meta_data,
                      container=container,
